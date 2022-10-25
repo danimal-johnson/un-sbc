@@ -71,8 +71,16 @@ Notes:
 | 0x?? | LED / Dice |
 | 0x?? | Jumpers |
 
+## Project Status
 
-## Working status
+I dumped the ROMS using an XGecu TL866II Plus programmer. Since the ROM is split into 2 chips (even and odd bytes), they had to be joined into one file. I used the Linux `srec_cat` utility for this. Here's the command (split onto 4 lines to make it more readable):
 
+```bash
+srec_cat
+  -o output.bin -binary
+  even.bin -binary -unsplit 2 0
+  odd.bin -binary -unsplit 2 1
+```
 
+Since the ROM requires 21V to program and the programmer supports a maximum of 18V, my dreams of updating the firmware have been dashed for the moment.
 
